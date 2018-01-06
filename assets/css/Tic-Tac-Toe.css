@@ -19,3 +19,7 @@ td {
 .horizontal {
 	border-bottom: 1px solid black;
 }
+
+h2 {
+	display: none;
+}

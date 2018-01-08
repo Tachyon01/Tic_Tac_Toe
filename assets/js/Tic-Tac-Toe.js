@@ -9,10 +9,13 @@ boxes[5] = document.getElementById('r2c3');
 boxes[6] = document.getElementById('r3c1');
 boxes[7] = document.getElementById('r3c2');
 boxes[8] = document.getElementById('r3c3');
-var reset = document.getElementById("reset");
+var re = document.getElementById("reset");
+var comp = document.getElementById("comp");
+var pvp = document.getElementById("pvp");
 var chance = true;
 var win = false;
 var val = [];
+var player = true;
 
 for (var i =0; i<9; i++)
 {
@@ -84,6 +87,10 @@ for (var i=0; i<val.length; i++)
 				val[ind] = 1;
 				winner();
 				chance = false;
+				if ( win===false && player === false)
+				{
+					computer();
+				}
 			}
 			else
 			{
@@ -110,22 +117,60 @@ function won()
 	{
 		document.getElementById("p1").style.display = "block";
 		win =true;
+		return 0;
 	}
 	else
 	{
 		document.getElementById("p2").style.display = "block";
 		win = true;
+		return 0;
 	}
 }
 
-reset.addEventListener("click",function(event){
-	
+re.addEventListener("click",function(event){
+	reset();
+});
+
+function computer()
+{
+	var z = choose();
+	while (val[z] != 0)
+	{
+		z= choose();
+	}
+
+	val[z] = 2;
+	boxes[z].innerHTML = '<img src="assets/images/cross.jpeg" width ="75" height ="75" style="padding-left: 12px; padding-top: 5px">';
+	winner();
+	chance = true;
+
+}
+
+function choose()
+{
+	 return Math.floor(Math.random() * 9);
+}
+
+comp.addEventListener("click", function(event){
+		player = false;
+		reset();
+});
+
+pvp.addEventListener("click", function(event){
+		player = true;
+		reset();
+});
+
+
+function reset()
+{
 	for (var i =0; i<9; i++)
 	{
 		val[i] = 0;
 	}
 
 	win = false;
+	chance = true;
 
 	for (var i=0; i<val.length; i++)
 	{
@@ -135,5 +180,4 @@ reset.addEventListener("click",function(event){
 	document.getElementById("draw").style.display = "none";
 	document.getElementById("p1").style.display = "none";
 	document.getElementById("p2").style.display = "none";
-
-});
+}

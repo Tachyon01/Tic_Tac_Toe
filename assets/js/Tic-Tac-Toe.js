@@ -16,6 +16,7 @@ var chance = true;
 var win = false;
 var val = [];
 var player = true;
+var message = document.getElementById("message");
 
 for (var i =0; i<9; i++)
 {
@@ -106,7 +107,7 @@ for (var i=0; i<val.length; i++)
 //display draw
 function draw()
 {
-	document.getElementById("draw").style.display = "block";
+	message.textContent = "Game Draw";
 	win = true;
 }
 
@@ -115,13 +116,13 @@ function won()
 {
 	if (chance)
 	{
-		document.getElementById("p1").style.display = "block";
+		message.textContent = "Player 1 wins";
 		win =true;
 		return 0;
 	}
 	else
 	{
-		document.getElementById("p2").style.display = "block";
+		message.textContent = "Player 1 wins";
 		win = true;
 		return 0;
 	}
@@ -177,7 +178,5 @@ function reset()
 		boxes[i].innerHTML = "";
 	}
 
-	document.getElementById("draw").style.display = "none";
-	document.getElementById("p1").style.display = "none";
-	document.getElementById("p2").style.display = "none";
+	message.textContent = "";
 }

@@ -9,6 +9,7 @@ boxes[5] = document.getElementById('r2c3');
 boxes[6] = document.getElementById('r3c1');
 boxes[7] = document.getElementById('r3c2');
 boxes[8] = document.getElementById('r3c3');
+
 var re = document.getElementById("reset");
 var comp = document.getElementById("comp");
 var pvp = document.getElementById("pvp");
@@ -107,7 +108,10 @@ for (var i=0; i<val.length; i++)
 //display draw
 function draw()
 {
+
 	message.textContent = "Game Draw";
+
+	
 	win = true;
 }
 
@@ -116,12 +120,14 @@ function won()
 {
 	if (chance)
 	{
+
 		message.textContent = "Player 1 wins";
 		win =true;
 		return 0;
 	}
 	else
 	{
+
 		message.textContent = "Player 1 wins";
 		win = true;
 		return 0;
@@ -170,13 +176,14 @@ function reset()
 		val[i] = 0;
 	}
 
+
 	win = false;
 	chance = true;
-
 	for (var i=0; i<val.length; i++)
 	{
 		boxes[i].innerHTML = "";
 	}
+
 
 	message.textContent = "";
 }
